@@ -158,11 +158,17 @@ function handleMove(i, j) {
 
     if (terminal(board)) {
         const winnerPlayer = winner(board);
-        alert(winnerPlayer ? `Player ${winnerPlayer} wins!` : 'Draw!');
+        const resultElement = document.getElementById('result');
+        if (winnerPlayer) {
+            resultElement.textContent = `Player ${winnerPlayer} wins!`;
+        } else {
+            resultElement.textContent = 'Draw!';
+        }
     }
 }
 
 function resetGame() {
+    document.getElementById('result').textContent = '';
     board = initialState();
     render();
 }
